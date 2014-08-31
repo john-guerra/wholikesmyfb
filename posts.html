@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-7 col-sm-7">
+        <h1 id="title">Who likes my posts?</h1>
+    </div>
+    <div class="col-5 col-sm-5">
+        <h3>Showing:
+        <div class="btn-group" data-toggle-name="showOptions" data-toggle="buttons">
+            <!-- <button id="showLikes" data-toggle="button" href="#" class="btn btn-success showLikes" type="button"> -->
+            <label id="showLikes" class="btn btn-success">
+                <input type="checkbox">Likes
+            </label>
+            <label id="showComments" class="btn btn-success">
+                <input type="checkbox">Comments
+            </label>
+        </div>
+        </h3>
+
+    </div>
+</div> <!-- row -->
+<div class="row">
+    <div class="col-7 col-sm-7">
+        <p id="postsInfo"></p>
+        <button id="loadMoreButton" class="btn btn-primary">Load more!</button>
+        <div id="likersTreeMap">
+            <div id="innerTreeMap">
+            </div>
+        </div>
+
+    </div>
+
+    <div class="col-5 col-sm-5">
+        <h2>Posts</h2>
+
+
+        Sort by:
+        <div class="btn-group" data-toggle-name="sortOptions" data-toggle="buttons-radio">
+            <button id="sortByDate" data-toggle="button" href="#" class="active btn btn-primary sortButton" type="button">Date</button>
+            <button id="sortByLikes" data-toggle="button" class="btn btn-primary sortButton" type="button">Likes</button>
+            <button id="sortByType" data-toggle="button" href="#" class="btn btn-primary sortButton" type="button">Type</button>
+        </div>
+        <div id="albums">
+            <div id="albumsData"></div>
+        </div>
+    </div>
+</div>

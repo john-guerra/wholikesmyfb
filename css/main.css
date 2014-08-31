@@ -1,0 +1,82 @@
+div#mainContainer {
+	padding: 50px 0px;
+}
+
+#albums.selected .liker {
+  opacity: 0.3;
+}
+#albums .liker.selected {
+  opacity: 1.0;
+}
+#albums .liker {
+  opacity: 1.0;
+}
+
+.node {
+  /*border: solid 1px white;*/
+  /*font: 10px sans-serif;*/
+  line-height: 1;
+  overflow: hidden;
+  position: absolute;
+  text-indent: 2px;
+  background-repeat:no-repeat;
+}
+
+.nodeBG {
+  z-index: -1;
+  opacity: 0.4;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-size: cover;
+  background-position: center;
+}
+
+#likersTreeMap.selected .node .nodeBG {
+  opacity: 0.1;
+}
+#likersTreeMap.selected .node.selected .nodeBG {
+  opacity: 0.6;
+}
+
+#albums {
+  margin-top: 10px;
+}
+
+.clearer {
+  clear: left;
+}
+
+.lefter {
+  float: left;
+}
+
+.likers {
+  width: 80%;
+}
+
+.postTitle {
+  width: 20%;
+}
+
+.numLikes {
+  margin-left: 4px;
+  /*font-weight: bold;*/
+  font-family: fantasy;
+
+}
+
+.album, .post {
+  background: #f2f2f2;
+  border: 1px solid #ddd;
+  padding: 0.25em 0.5em;
+  margin-bottom: 0.5em;h
+}
+
+#logout {
+  display: none;
+}
