@@ -247,6 +247,92 @@ function WLItem(navID) {
         }
     }
 
+    // http://stackoverflow.com/questions/728360/how-to-correctly-clone-a-javascript-object
+    function clone(obj) {
+        var copy;
+
+        // Handle the 3 simple types, and null or undefined
+        if (null == obj || "object" != typeof obj) return obj;
+
+        // Handle Date
+        if (obj instanceof Date) {
+            copy = new Date();
+            copy.setTime(obj.getTime());
+            return copy;
+        }
+
+        // Handle Array
+        if (obj instanceof Array) {
+            copy = [];
+            for (var i = 0, len = obj.length; i < len; i++) {
+                copy[i] = clone(obj[i]);
+            }
+            return copy;
+        }
+
+        // Handle Object
+        if (obj instanceof Object) {
+            copy = {};
+            for (var attr in obj) {
+                if (obj.hasOwnProperty(attr)) copy[attr] = clone(obj[attr]);
+            }
+            return copy;
+        }
+
+        throw new Error("Unable to copy obj! Its type isn't supported.");
+    }
+
+    function flattenAlbums(albums) {
+        var flatten = [];
+        albums.forEach(function (a) {
+            if (a.likes && a.likes.data) {
+                a.likes.data.forEach(function (l) {
+                    var obj = clone(a);
+                    obj.typeInteraction="like";
+                    obj.friend = l.name;
+                    obj.friendId = l.id;
+                    obj.interactionTime = null;
+                    obj.interactionDetail = null;
+                    flatten.push(obj);
+                });
+            }
+            if (a.comments && a.comments.data) {
+                a.comments.data.forEach(function (c) {
+                    var obj = clone(a);
+                    obj.typeInteraction="comments";
+                    obj.friend = c.from.name;
+                    obj.friendId = c.id;
+                    obj.interactionTime = c.created_time;
+                    obj.interactionDetail = c.message;
+                    flatten.push(obj);
+                });
+            }
+
+
+        });
+        return flatten;
+    }
+
+    function download() {
+        $("#downloadButton").prop("disabled", true);
+
+
+        var csvContent = "data:text/csv;charset=utf-8,";
+        csvContent += toCsv(flattenAlbums(albums));
+        // albums.forEach(function(album, index) {
+
+        //    dataString = album.join(",");
+        //    csvContent += index < data.length ? dataString+ "\n" : dataString;
+
+        // });
+
+        var encodedUri = encodeURI(csvContent);
+        window.open(encodedUri);
+
+
+        $("#downloadButton").prop("disabled", false);
+    }
+
 
 
 
@@ -334,6 +420,9 @@ function WLItem(navID) {
 
         d3.select("#loadMoreButton")
             .on("click", loadMore);
+        d3.select("#downloadButton")
+            .on("click", download);
+
 
         $("#loadMoreButton").prop("disabled", true);
         $("#showComments").prop("disabled", true);

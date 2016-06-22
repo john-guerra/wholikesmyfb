@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,11 +8,12 @@
   <meta name="author" content="">
   <!-- <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png"> -->
 
-  <title>Who likes my posts?</title>
+  <title>Who likes my Facebook? Privacy Page</title>
 
   <link href="css/main.css" rel="stylesheet">
   <!-- Bootstrap core CSS -->
   <link href="css/bootstrap.css" rel="stylesheet">
+  <link rel="image_src" href="img/wholikesmyfb.png" />
 
   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -24,49 +24,37 @@
     </head>
 
     <body>
+
     <span id="nav"></span>
 
-
+    <div id="fb-root"></div>
     <div class="container" id="mainContainer">
-
-     <div id="fb-root"></div>
-
-     <div class="row">
-      <div class="col-5 col-sm-5">
-        <fb:login-button show-faces="true" width="200" max-rows="1" scope="user_photos, read_stream"></fb:login-button>
-
-      </div>
-
-      <div class="col-7 col-sm-7">
+      <h1>Who likes my Facebook</h1>
+      <h2>Privacy policy</h2>
+      <p>This app doesn't collect any information from your account. All the data accessed from Facebook stays on your browser, and is never stored in our servers. For any questions you can find me at <a href="http://twitter.com/duto_guerra">@duto_guerra</a>.</p>
+    </div><!-- /.container -->
 
 
-      <div id="albums"></div>
-      </div>
-    </div>
 
 
-  </div><!-- /.container -->
 
 
-<!-- Bootstrap core JavaScript
+  </body>
+  <!-- Bootstrap core JavaScript
   ================================================== -->
   <!-- Placed at the end of the document so the pages load faster -->
   <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-
+  <script src="js/jquery.prettydate.js"></script>
   <script src="js/bootstrap.min.js"></script>
-  <script src="js/d3.v3.min.js"></script>
-  <script src="js/posts.js"></script>
-  <script src="js/main.js"></script>
-  </body>
 
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-    ga('create', 'UA-45612277-1', 'dutovis.com');
-    ga('send', 'pageview');
+  ga('create', 'UA-45612277-2', 'wholikesmyfb.com');
+  ga('send', 'pageview');
 
-  </script>
-</html>
+</script>
+  </html>

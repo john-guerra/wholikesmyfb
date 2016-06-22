@@ -1,5 +1,5 @@
 /*jslint browser: true, indent: 4 */
-/* global d3: false, $: false, MyFB: false, WLAlbums: false, WLPosts: false, FB: false */
+/* global d3: false, $: false, MyFB: false, WLAlbums: false, WLPosts: false, FB: false, console: false */
 "use strict";
 function getUrlForPhoto(id, type) {
     return "https://graph.facebook.com/" + id + "/picture?type=" + type + "&access_token=" + FB.getAccessToken();
@@ -68,7 +68,16 @@ function getLikersTree(dLikerCount) {
             .append("div")
             .attr("id", "login_message")
             .text("You need to authorize our app to use it")
-                    .on("click", function () { FB.login(); });
+                    .on("click", function () {
+                        FB.login(function (res) {
+                            console.log("Facebook login");
+                            console.log(res);
+                        },
+                            {
+                                scope: 'user_photos,read_stream,user_status,user_posts',
+                                return_scopes: true
+                            });
+                    });
     }
 
     function needLoginCall() {
@@ -76,7 +85,16 @@ function getLikersTree(dLikerCount) {
             .append("div")
             .attr("id", "login_message")
             .text("Please login to Facebook to use this app")
-                    .on("click", function () { FB.login(); });
+                    .on("click", function () {
+                        FB.login(function (res) {
+                            console.log("Facebook login");
+                            console.log(res);
+                        },
+                            {
+                                scope: 'user_photos,read_stream,user_status,user_posts',
+                                return_scopes: true
+                            });
+                    });
     }
 
     function getParameterByName(name) {
@@ -109,7 +127,7 @@ function getLikersTree(dLikerCount) {
     albums = new WLAlbums("#navAlbums");
     posts = new WLPosts("#navPosts");
 
-    type = getParameterByName("type") || "posts";
+    type = getParameterByName("type") || "albums";
     $("#nav").load("nav.html");
     $("#mainContainer").load("login.html");
 
