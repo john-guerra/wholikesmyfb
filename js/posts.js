@@ -14,5 +14,5 @@ function WLPosts(navID) {
     return self;
 }
 
-WLPosts.prototype = new WLItem("#navAlbums");
+WLPosts.prototype = new WLItem("#navPosts");
 WLPosts.prototype.constructor = WLPosts;
