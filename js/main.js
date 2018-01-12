@@ -74,7 +74,7 @@ function getLikersTree(dLikerCount) {
                             console.log(res);
                         },
                             {
-                                scope: 'user_photos,read_stream,user_status,user_posts',
+                                scope: 'user_photos,user_status,user_posts',
                                 return_scopes: true
                             });
                     });
@@ -91,7 +91,7 @@ function getLikersTree(dLikerCount) {
                             console.log(res);
                         },
                             {
-                                scope: 'user_photos,read_stream,user_status,user_posts',
+                                scope: 'user_photos,user_status,user_posts',
                                 return_scopes: true
                             });
                     });

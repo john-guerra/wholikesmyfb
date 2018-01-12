@@ -26,7 +26,7 @@ WLAlbums.prototype.runFBQuery = function () {
 
 WLAlbums.prototype.getItemIcon = function (d) {
     if (d.cover_photo) {
-        return getUrlForPhoto(d.cover_photo, "thumbnail");
+        return getUrlForPhoto(d.cover_photo.id, "thumbnail");
     }
 
 };

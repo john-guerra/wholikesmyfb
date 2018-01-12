@@ -10,6 +10,7 @@ div#mainContainer {
 }
 #albums .liker {
   opacity: 1.0;
+  border-radius: 20%;
 }
 
 .node {
@@ -52,6 +53,8 @@ div#mainContainer {
 }
 
 .lefter {
+  width: 100%;
+  padding: 0px 2px;
   float: left;
 }
 

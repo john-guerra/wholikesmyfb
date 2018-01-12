@@ -88,7 +88,7 @@ function WLItem(navID) {
     }
 
     self.getItemIcon = function (d) {
-        return d.icon || "undefined.gif";
+        return d.picture || d.icon || "undefined.gif";
     };
 
     self.getItemTitle = function (d) {
@@ -437,7 +437,7 @@ function WLItem(navID) {
     };
 
     self.runFBQuery = function () {
-        FB.api("/me/posts?fields=id,icon,created_time,type,link,likes.summary(true),comments.summary(true)", self.displayPosts);
+        FB.api("/me/posts?fields=id,icon,created_time,type,link,likes.summary(true),comments.summary(true),caption,message,description,picture", self.displayPosts);
     };
 
 
