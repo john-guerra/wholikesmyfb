@@ -50,10 +50,62 @@ function getLikersTree(dLikerCount) {
         };
 }
 
+// What to do when the user is not authenticated
+function nonAuthCall() {
+    d3.select("body")
+        .append("div")
+        .attr("id", "login_message")
+        .text("You need to authorize our app to use it")
+                .on("click", function () {
+                    FB.login(function (res) {
+                        console.log("Facebook login");
+                        console.log(res);
+                    },
+                        {
+                            scope: 'user_photos,user_status,user_posts',
+                            return_scopes: true
+                        });
+                });
+}
 
+// What to do when the user only needs to login
+function needLoginCall() {
+    d3.select("body")
+        .append("a")
+        .attr("id", "login_message")
+        .text("Please login to Facebook to use this app")
+                .on("click", function () {
+                    FB.login(function (res) {
+                        console.log("Facebook login");
+                        console.log(res);
+                    },
+                        {
+                            scope: 'user_photos,user_posts',
+                            return_scopes: true
+                        });
+                });
+}
 
+function fbReady() {
+    d3.select("#loginDiv").remove();
 
-(function () {
+    $("#logout").show();
+    d3.select("#logout").on("click", logout);
+    if (type === "albums") {
+        $("#mainContainer").load("albums.html",
+            function () {
+                    albums.load();
+                });
+    } else {
+        $("#mainContainer").load("posts.html",
+            function () {
+                    posts.load();
+                });
+
+    }
+}
+
+// (function () {
     var albums, posts, type, logout;
 
     logout = function () {
@@ -63,39 +115,7 @@ function getLikersTree(dLikerCount) {
         });
     };
 
-    function errorAuthCall() {
-        d3.select("body")
-            .append("div")
-            .attr("id", "login_message")
-            .text("You need to authorize our app to use it")
-                    .on("click", function () {
-                        FB.login(function (res) {
-                            console.log("Facebook login");
-                            console.log(res);
-                        },
-                            {
-                                scope: 'user_photos,user_status,user_posts',
-                                return_scopes: true
-                            });
-                    });
-    }
 
-    function needLoginCall() {
-        d3.select("body")
-            .append("div")
-            .attr("id", "login_message")
-            .text("Please login to Facebook to use this app")
-                    .on("click", function () {
-                        FB.login(function (res) {
-                            console.log("Facebook login");
-                            console.log(res);
-                        },
-                            {
-                                scope: 'user_photos,user_status,user_posts',
-                                return_scopes: true
-                            });
-                    });
-    }
 
     function getParameterByName(name) {
         name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
@@ -104,26 +124,8 @@ function getLikersTree(dLikerCount) {
         return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
     }
 
-    function fbReady() {
-        d3.select("#loginDiv").remove();
 
-        $("#logout").show();
-        d3.select("#logout").on("click", logout);
-        if (type === "albums") {
-            $("#mainContainer").load("albums.html",
-                function () {
-                        albums.load();
-                    });
-        } else {
-            $("#mainContainer").load("posts.html",
-                function () {
-                        posts.load();
-                    });
-
-        }
-    }
-
-    new MyFB(fbReady, errorAuthCall, needLoginCall);
+    // new MyFB(fbReady, errorAuthCall, needLoginCall);
     albums = new WLAlbums("#navAlbums");
     posts = new WLPosts("#navPosts");
 
@@ -133,4 +135,4 @@ function getLikersTree(dLikerCount) {
 
 
 
-}());
+// }());

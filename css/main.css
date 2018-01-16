@@ -75,9 +75,11 @@ div#mainContainer {
 
 .album, .post {
   background: #f2f2f2;
-  border: 1px solid #ddd;
+  /*border: 1px solid #ddd;*/
   padding: 0.25em 0.5em;
-  margin-bottom: 0.5em;h
+  /*margin-bottom: 0.5em;*/
+  margin: 5px;
+  border-radius: 3px;
 }
 
 #logout {
